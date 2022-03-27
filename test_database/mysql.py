@@ -4,6 +4,7 @@ from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 import pymysql
+from sqlalchemy.sql import text
 
 Base = declarative_base()
 
@@ -15,16 +16,26 @@ class TestMysql(Base):
     last_name = Column(String(255))
     age = Column(Integer)
 
+
     def create_table(self):
-        engine = create_engine("mysql+pymysql://root:supervegeta318@localhost/test_database?charset=cp932")
+        engine = create_engine("mysql+pymysql://root:password@localhost/test_database?charset=cp932")
         Base.metadata.create_all(engine)
 
     def insert_db(self):
-        engine = create_engine("mysql+pymysql://root:supervegeta318@localhost/test_database?charset=cp932")
+        engine = create_engine("mysql+pymysql://root:password@localhost/test_database?charset=cp932")
         user_a = TestMysql(first_name="first_a", last_name="last_a", age=20)
         SessionClass = sessionmaker(engine)  # セッションを作るクラスを作成
         session = SessionClass()
         session.add(user_a)
         session.commit()
+
+    def update(self):
+        engine = create_engine("mysql+pymysql://root:supervegeta318@localhost/test_database?charset=cp932")
+        SessionClass = sessionmaker(engine)  # セッションを作るクラスを作成
+        session = SessionClass()
+        t = text(f'UPDATE user2 SET age=age+1 WHERE first_name="first_a" and last_name="last_a";')
+        session.execute(t)
+        session.commit()
+
 
 
