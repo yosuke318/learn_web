@@ -11,7 +11,6 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <Basic1 name="Hooks"/>
-        <Basic1 name="today"/>
       </header>
     </div>
   );
