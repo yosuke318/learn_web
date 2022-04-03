@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 
 const BasicUseEffect = () => {
     const [count, setCount] = useState(0)
+    // renderingされた最初の一回だけ呼ばれる
     useEffect(()=> {
         console.log('useEffect invoke')
     },[]
