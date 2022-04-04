@@ -8,6 +8,7 @@ const BasicUseEffect = () => {
     useEffect(()=> {
         console.log('useEffect invoke')
     },[count]
+    // 第二引数にcountを設定することでclickするたびにuseEffectが反応する
     )
     return (
         <div>
