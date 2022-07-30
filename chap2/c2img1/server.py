@@ -13,5 +13,6 @@ app.run(debug=True, host='0.0.0.0', port=80)
 # docker container cp コピー元 コンテナ名:コンテナ内のパス
 # exitででるとなぜかコンテナが停止する。
 # コンテナに再び入りpython -u /server.pyを実行
+# http://localhost:8080/
 
 # ※Flask==2系をつかうべし
