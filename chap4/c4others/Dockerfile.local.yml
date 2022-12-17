@@ -1,0 +1,18 @@
+FROM centos:7.7.1908
+RUN rpm -ivh https://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+RUN yum -y install nginx
+VOLUME /volume
+EXPOSE 80
+USER nginx
+COPY ./html/ /usr/share/nginx/html/
+USER root
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
+
+# CentOS7にnginxをyumでインストールしています。
+# こういったファイルは開発時に便利です。ビルド時は-fオプションでDockerfileとして指定しましょう
+#コピー元はDockerfileから相対パスで指定し、コピー先は絶対パスで指定
+# volume : 指定しなくてもvlolumeが作成されてマウントされる領域
+# Expose: 外部に公開するポートの宣言。80にフォーワードするわけではないので、RUN時に-pでフォーワードしてあげましょう
+# USER : ユーザの変更
+# ENTRYPOINT : イメージのデフォルト実行コマンドを強く定義。cmdをオプションで指定して、entrypointでnginxコマンドを実行
