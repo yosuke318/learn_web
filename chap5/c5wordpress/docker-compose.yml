@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:5.7.28
+    restart: unless-stopped
+    networks:
+      - wp_net
+    volumes:
+      - mysql_volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: password
+
+  wordpress:
+    image: wordpress:6.1.1-php8.0-apache
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    networks:
+      - wp_net
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: password
+
+networks:
+  wp_net:
+    driver: bridge
+volumes:
+  mysql_volume:
+    driver: local
+
+# networksで二つのコンテナはwp_netに接続されるため、IP通信とhスト名の解決ができます・
+# restartはコンテナが異常停止した場合に再起動して欲しい場合はunless-stoppedを指定し、止まって良い場合は何も指定しません。
