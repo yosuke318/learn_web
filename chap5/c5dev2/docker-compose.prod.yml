@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+
+    image: c5dev_nginx
+    container_name: c5dev_nginx
+    restart: unless-stopped
+    ports:
+      - 8080:80

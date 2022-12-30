@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+
+    image: c5dev_nginx
+    container_name: c5dev_nginx
+    restart: unless-stopped
+    ports:
+      - 8080:80
+
+    volumes:
+      - ./web/html:/usr/share/nginx/html
+
+# image名を指定していることでcompose外での利用をしやすくなります。
+# また、コンテナ名もデフォルトでなく指定した名前にし、dockerコマンドで識別しやすくなります。
+# restartにより意図せず停止した際に再起動するようにしています。
+
+# 要するに本番に適したComposeファイルにしているということです。
+
+#開発用を停止して本番用コンテナを立ち上げると、ホストのソースコードを変更してもコンテナは反映されません。
+# 今度はbindせずにDockerで一般的なコードを取り込む形でコンテナを作成しているためです。
