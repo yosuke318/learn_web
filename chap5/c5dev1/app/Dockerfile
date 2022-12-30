@@ -4,3 +4,5 @@ WORKDIR /src
 COPY ./src/server.py /src/
 ENV PORT 80
 ENTRYPOINT ["python", "-u", "server.py"]
+
+# flask 2系
