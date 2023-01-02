@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  study_react_service:
+    container_name: study_react_container
+    build:
+      context: ""
+    volumes:
+      - ../:/usr/src/app
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
