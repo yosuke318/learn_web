@@ -1,9 +1,14 @@
 import {ColoredMessage} from "./components/coloredMessage";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 export const App = () => {
 
   const [num, setNum] = useState(0);
+
+  // Stateの値が変わった時のみアラートを表示する。（初回も実行される）
+  // useEffect(() => {
+  //   alert()
+  // }, [num])
 
   const onClickButton = () => {
     // setNum ((num) =>
