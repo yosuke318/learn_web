@@ -1,14 +1,23 @@
 import {ColoredMessage} from "./components/coloredMessage";
+import {useState} from "react";
 
 export const App = () => {
 
+  const [num, setNum] = useState(0);
+
   const onClickButton = () => {
-    alert()
+    // setNum ((num) =>
+    //   num + 1
+    // )
+    setNum ((num) =>
+      num + 1
+    )
+    // setNum(num + 1)
+    // setNum(num + 1)
+    // 更新直前のStateの値が渡されるから、その値に1を足すことで同じ事が実現できる。
   }
 
   // もちろんCSSを事前に定義することもできます。
-
-
   const contentPinkStyle = {
     color: "pink",
     fontSize: "20px"
@@ -22,7 +31,7 @@ export const App = () => {
       {/*<ColoredMessage color={"pink"} message={"お元気です(messageで渡す版)"} />*/}
       <ColoredMessage color={"red"}>元気です！(childrenで渡す版)</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
-    {/*  buttonタグの属性に*/}
+      <p>{num}</p>
     </div>
 
 );
