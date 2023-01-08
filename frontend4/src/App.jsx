@@ -17,8 +17,10 @@ export const App = () => {
   return(
     <div>
       <h1 style={{color: "red"}}>こんにちは</h1>
-      <ColoredMessage />
-      <p style={contentPinkStyle}>元気です</p>
+      {/*<ColoredMessage color={"green"} message={"お元気ですか(messageで渡す版)"} />*/}
+      <ColoredMessage color={"red"}>お元気ですか？（childrenで渡す版）</ColoredMessage>
+      {/*<ColoredMessage color={"pink"} message={"お元気です(messageで渡す版)"} />*/}
+      <ColoredMessage color={"red"}>元気です！(childrenで渡す版)</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
     {/*  buttonタグの属性に*/}
     </div>
