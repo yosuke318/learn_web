@@ -6,7 +6,7 @@ services:
     build:
       context: ""
     volumes:
-      - ./frontend4:/usr/src/app
+      - ./frontend5:/usr/src/app
     ports:
       - '3000:3000'
     stdin_open: true
