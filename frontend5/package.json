@@ -1,32 +1,33 @@
 {
-  "name": "study_react_name",
+  "name": "react-css",
   "version": "0.1.0",
   "private": true,
-  "main": "/src/index.tsx",
   "dependencies": {
-    "@emotion/react": "11.10.5",
-    "@emotion/styled": "11.10.5",
-    "@types/react-dom": "^18.0.9",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^12.0.0",
-    "react": "^18.0.0",
-    "react-dom": "18.0.0",
+    "@craco/craco": "^6.2.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "node-sass": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "react-router-dom": "6.2.2",
-    "typescript": "^3.9.7",
-    "clsx": "1.0.4",
-    "axios": "^0.21.1"
+    "styled-components": "^5.3.1",
+    "styled-jsx": "^4.0.1",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node_modules/.bin/react-scripts start",
-    "build": "node_modules/.bin/react-scripts build",
-    "test": "node_modules/.bin/react-scripts test",
-    "eject": "node_modules/.bin/react-scripts eject",
-    "serve": "serve -s ../build/resources/main"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
