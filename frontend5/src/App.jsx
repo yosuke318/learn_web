@@ -1,5 +1,7 @@
 import {ColoredMessage} from "./components/coloredMessage";
 import {useState, useEffect} from "react";
+import {StyledJsx} from "./components/StyledJsx";
+import {StyledComponents} from "./components/StyledComponents";
 
 export const App = () => {
 
@@ -36,6 +38,8 @@ export const App = () => {
       {/*<ColoredMessage color={"pink"} message={"お元気です(messageで渡す版)"} />*/}
       <ColoredMessage color={"red"}>元気です！(childrenで渡す版)</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
+      <StyledComponents/>
+      <StyledJsx/>
       <p>{num}</p>
     </div>
 
