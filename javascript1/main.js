@@ -30,3 +30,7 @@ for(var i = 0; i < fruitElms.length; i++){
   var fruitElm = fruitElms[i];
   console.log(fruitElm.textContent);
 }
+
+// 要素のみを取り出すこともできるべ
+var fruitElms = document.getElementsByClassName('fruit')[0];
+console.log(fruitElms.innerHTML)
