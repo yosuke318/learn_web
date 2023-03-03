@@ -29,7 +29,9 @@ export const App = memo(()=> {
         <>
             <button onClick={onClickButton}>Button</button>
             <p>{num}</p>
-            <Child1 onClickReset={onClickReset} onClickMulti={onClickMultiple}/>
+            <Child1 onClickReset={onClickReset}
+                    onClickMulti={onClickMultiple}
+                    onClickUsememo={onClickMulti}/>
             <Child4/>
         </>
     );
