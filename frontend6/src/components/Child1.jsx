@@ -10,12 +10,13 @@ const style = {
 export const Child1 = memo((props) => {
     console.log("Child1 レンダリング");
 
-    const {onClickReset} = props;
+    const {onClickReset, onClickMulti} = props;
 
     return (
         <div style={style}>
             <p>Child1</p>
             <button onClick={onClickReset}>リセット</button>
+            <button onClick={onClickMulti}>掛け算</button>
             <Child2/>
             <Child3/>
         </div>

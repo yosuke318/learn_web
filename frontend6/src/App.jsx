@@ -1,4 +1,4 @@
-import {useState, memo, useCallback} from "react";
+import {useState, memo, useCallback, useMemo} from "react";
 import { Child1 } from "./components/Child1";
 import { Child4 } from "./components/Child4";
 
@@ -15,11 +15,21 @@ export const App = memo(()=> {
         setNum(0);
     }, []);
 
+    // useMemoではChild1が再レンダリングされないので更新なし
+    const onClickMulti = useMemo(()=>{
+        setNum(num * 10);
+    },[])
+
+    const onClickMultiple=()=>{
+        setNum(num * 10);
+    }
+
+
     return(
         <>
             <button onClick={onClickButton}>Button</button>
             <p>{num}</p>
-            <Child1 onClickReset={onClickReset}/>
+            <Child1 onClickReset={onClickReset} onClickMulti={onClickMultiple}/>
             <Child4/>
         </>
     );
