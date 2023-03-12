@@ -1,6 +1,5 @@
 import {ColoredMessage} from "./components/coloredMessage";
 import {useState, useEffect} from "react";
-import {modalUnstyledClasses} from "@mui/material";
 
 export const App = () => {
 
@@ -15,11 +14,7 @@ export const App = () => {
     // setNum ((num) =>
     //   num + 1
     // )
-    setNum ((num) =>
-      num + 1
-    )
-    // setNum(num + 1)
-    // setNum(num + 1)
+    setNum(num + 1)
     // 更新直前のStateの値が渡されるから、その値に1を足すことで同じ事が実現できる。
   }
 
@@ -35,7 +30,7 @@ export const App = () => {
       {/*<ColoredMessage color={"green"} message={"お元気ですか(messageで渡す版)"} />*/}
       <ColoredMessage color={"red"}>お元気ですか？（childrenで渡す版）</ColoredMessage>
       {/*<ColoredMessage color={"pink"} message={"お元気です(messageで渡す版)"} />*/}
-      <ColoredMessage color={"red"}>元気です！(childrenで渡す版)</ColoredMessage>
+      <p style={contentPinkStyle}>元気です！(childrenで渡す版)</p>
       <button onClick={onClickButton}>ボタン</button>
       <p>{num}</p>
     </div>

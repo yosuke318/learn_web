@@ -5,8 +5,6 @@ export const StyledJsx = () => {
           <p className="title">Styled JSXです</p>
           <button className="button">ボタン</button>
         </div>
-
-
         <style jsx>{`
         .container {
           border: solid 1px #aaa;
@@ -34,7 +32,5 @@ export const StyledJsx = () => {
         }
       `}</style>
       </>
-
-
   )
 }
