@@ -26,9 +26,6 @@ function stopWatch(options) {
 
         //最新の子要素を先頭に追加する場合はprepend
         logElm.prepend(messageElm)
-
-        startButton.disabled = true;
-        stopButton.disabled = false;
     }
 
 
@@ -57,6 +54,9 @@ function stopWatch(options) {
             }, 100);
 
             addMessage('開始')
+
+            startButton.disabled = true;
+            stopButton.disabled = false;
 
         }
     });
