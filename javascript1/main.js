@@ -1,5 +1,5 @@
-let displayElm = document.getElementsByClassName('display')[0];
 let startButton = document.getElementsByClassName('startButton')[0];
+let stopButton = document.getElementsByClassName('stopButton')[0];
 let timer = null;
 
 
@@ -28,6 +28,7 @@ function stopWatch(options) {
         logElm.prepend(messageElm)
 
         startButton.disabled = true;
+        stopButton.disabled = false;
     }
 
 
@@ -60,7 +61,6 @@ function stopWatch(options) {
         }
     });
 
-    let stopButton = document.getElementsByClassName('stopButton')[0];
     stopButton.addEventListener('click', function () {
         // ボタンがクリックされて、timer変数がnullでないなら発火
         if (timer !== null) {
@@ -69,6 +69,7 @@ function stopWatch(options) {
 
             addMessage('終了')
             startButton.disabled = false;
+            stopButton.disabled = true;
         }
     });
 }
