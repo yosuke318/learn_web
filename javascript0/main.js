@@ -31,6 +31,6 @@ for(var i = 0; i < fruitElms.length; i++){
   console.log(fruitElm.textContent);
 }
 
-// 要素のみを取り出すこともできるべ
+// 要素のみを取り出すこともできる
 var fruitElms = document.getElementsByClassName('fruit')[0];
 console.log(fruitElms.innerHTML)
