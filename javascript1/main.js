@@ -46,6 +46,9 @@ function stopWatch(options) {
 
             //https://developer.mozilla.org/ja/docs/Web/API/setInterval
             timer = setInterval(function () {
+                if (seconds === 1800) {
+                    alert("ラーメンタイマー")
+                }
                 seconds++;
                 miliseconds = seconds * 0.1;
                 miliseconds = parseFloat(miliseconds.toFixed(1));
