@@ -1,10 +1,10 @@
-var displayElm = document.getElementsByClassName('display')[0];
-var startButton = document.getElementsByClassName('startButton')[0];
-var timer = null;
+let displayElm = document.getElementsByClassName('display')[0];
+let startButton = document.getElementsByClassName('startButton')[0];
+let timer = null;
 
 
 // document.querySelectorは、引数に与えたCSSセレクタに合致する画面上のHTMLタグ要素を一つ取得する.
-var logElm = document.querySelector('.log')
+let logElm = document.querySelector('.log')
 
 function stopWatch(options) {
 
@@ -12,10 +12,10 @@ function stopWatch(options) {
     function addMessage(message) {
 
         // document.createElementは、指定した名前のHTMLタグ要素を作成することができる関数(今回はdiv)
-        var messageElm = document.createElement('div')
+        let messageElm = document.createElement('div')
 
         // 開始という文字をタグ内に表示する。
-        var now = new Date();
+        let now = new Date();
         messageElm.innerText = now.getHours() + '時' + now.getMinutes()
             + '分' + now.getSeconds() + '秒' + message
 
@@ -26,14 +26,16 @@ function stopWatch(options) {
 
         //最新の子要素を先頭に追加する場合はprepend
         logElm.prepend(messageElm)
+
+        startButton.disabled = true;
     }
 
 
     // 引数optionsでCSSの値を渡している
     options = options || {};
-    var color = options.color || 'lightblue';
-    var backgroundColor = options.backgroundColor || 'black';
-    var displayElm = document.getElementsByClassName('display')[0];
+    let color = options.color || 'lightblue';
+    let backgroundColor = options.backgroundColor || 'black';
+    let displayElm = document.getElementsByClassName('display')[0];
     displayElm.style.color = color;
     displayElm.style.backgroundColor = backgroundColor
 
@@ -42,7 +44,7 @@ function stopWatch(options) {
         // ボタンがクリックされて、timer変数がnullなら発火
         if (timer === null) {
             console.log('start');
-            var seconds = 0;
+            let seconds = 0;
 
             //https://developer.mozilla.org/ja/docs/Web/API/setInterval
             timer = setInterval(function () {
@@ -54,23 +56,11 @@ function stopWatch(options) {
             }, 100);
 
             addMessage('開始')
-            // var message = '開始';
-            //
-            // // document.createElementは、指定した名前のHTMLタグ要素を作成することができる関数(今回はdiv)
-            // var messageElm = document.createElement('div')
-            //
-            // // 開始という文字をタグ内に表示する。
-            // messageElm.innerText = message
-            //
-            // // document.querySelectorは、引数に与えたCSSセレクタに合致する画面上のHTMLタグ要素を一つ取得する.
-            // var logElm = document.querySelector('.log');
-            //
-            // // 取得したHTMLタグ要素の子としてmessageElm(作成したdivタグ)を描画する
-            // logElm.appendChild(messageElm);
+
         }
     });
 
-    var stopButton = document.getElementsByClassName('stopButton')[0];
+    let stopButton = document.getElementsByClassName('stopButton')[0];
     stopButton.addEventListener('click', function () {
         // ボタンがクリックされて、timer変数がnullでないなら発火
         if (timer !== null) {
@@ -78,11 +68,12 @@ function stopWatch(options) {
             timer = null;
 
             addMessage('終了')
+            startButton.disabled = false;
         }
     });
 }
 
-var options = {
+let options = {
     color: 'lightgreen',
     backgroundColor: '#333'
 };
