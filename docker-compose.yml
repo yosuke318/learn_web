@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  study_react_service4:
+  study_react_service7:
     container_name: study_react_container
     build:
       context: ""
     volumes:
-      - ./frontend4:/usr/src/app
+      - ./frontend7:/usr/src/app
     ports:
       - '3000:3000'
     stdin_open: true
