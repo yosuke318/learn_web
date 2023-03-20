@@ -4,6 +4,7 @@ export const AdminFlagContext = createContext({});
 
 export const AdminFlagProvider = (props) => {
     const {children} = props;
+    console.log("children: ",children)
 
     //　管理者フラグ
     const [isAdmin, setIsAdmin] = useState(false);
