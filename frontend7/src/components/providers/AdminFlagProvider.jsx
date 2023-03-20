@@ -8,7 +8,8 @@ export const AdminFlagProvider = (props) => {
     //　管理者フラグ
     const [isAdmin, setIsAdmin] = useState(false);
 
-    // ContextオブジェクトとしてisAdminとsetIsAdminを設定(オブジェクトの省略記法)
+    // ContextオブジェクトとしてisAdminとsetIsAdmin(更新関数)を設定(オブジェクトの省略記法)
+    // valueにグローバルで扱うデータを入れる。
     return (
         <AdminFlagContext.Provider value={{isAdmin, setIsAdmin}}>
             {children}

@@ -13,6 +13,7 @@ export const EditButton = () => {
     const {isAdmin} = useContext(AdminFlagContext);
 
     return (
+        // 管理者以外だと非表示
         <button style={style} disabled={!isAdmin}>
             編集
         </button>

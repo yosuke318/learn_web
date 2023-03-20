@@ -7,7 +7,7 @@ export const App = () => {
     // Context内のisAdminと更新関数を取得
     const {isAdmin, setIsAdmin} = useContext(AdminFlagContext);
 
-    //切替押下時
+    // 切替押下時にcontextから取得した更新関数setIsAdminを実行
     const onClickSwitch = () => setIsAdmin(!isAdmin);
 
     return (
