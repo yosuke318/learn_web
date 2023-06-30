@@ -1,0 +1,24 @@
+# ---ステージ1/2 ビルド用のNode.jsコンテナ---
+FROM node:16.13.0 as builder
+
+WORKDIR ./frontend7
+
+# 依存パッケージのインストール
+COPY ./frontend7/package*.json ./
+RUN npm install
+
+COPY ./frontend7/public ./public
+COPY ./frontend7/src ./src
+
+# Reactビルドの実行(/app/build配下にReactのビルドファイルが作成される)
+RUN npm run build
+
+
+# ---ステージ2/2 nginxコンテナ---
+FROM nginx:1.21.4
+
+# ビルド用のNode.jsコンテナ(=builder)からビルドファイルをコピーする
+COPY --from=builder frontend7/build/ /usr/share/nginx/html/
+
+# nginx設定ファイルの配置 (コンテナイメージ内の/etc/nginx/templates/*.templateは起動時、envsubst実行後に /etc/nginx/conf.dに展開される)
+COPY ./frontend7/etc/nginx/conf.d/myapp.example.com.conf /frontend7/etc/nginx/templates/default.conf.template

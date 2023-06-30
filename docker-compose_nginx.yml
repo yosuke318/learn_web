@@ -1,0 +1,14 @@
+version: '3'
+services:
+  react-frontend:
+    build:
+      dockerfile: Dockerfile_nginx
+    ports:
+      - "8080:443"
+    environment:
+      - SOME_ENV_VARIABLE=hogehoge
+    restart: always
+    tty: true
+    volumes:
+      - ./frontend7/etc/nginx/conf.d:/frontend7/etc/nginx/template
+
