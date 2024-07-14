@@ -1,29 +1,47 @@
 import React, { useState, useEffect } from 'react';
 
 export const App = () => {
-    const [text, setText] = useState('');
+    const [text, setText] = useState('clickable');
 
     useEffect(() => {
-        setText("This is a clickable part of the text.'")
+        setText("This is a ○clickable\n part of the text.")
     }, []);
 
-    const handleClick = () => {
-        alert('Button clicked!');
+    const handleClick = (word) => {
+        alert(`Button clicked: ${word}`);
+    };
+
+    const renderText = () => {
+        const regex = /○(.*?)\n/g;
+        const parts = [];
+        let lastIndex = 0;
+        let match = "initial_str";
+
+        while ((match = regex.exec(text)) !== null) {
+            const { index } = match;
+            parts.push(text.substring(lastIndex, index));
+            console.log(match)
+            parts.push(
+                <button
+                    key={index}
+                    onClick={() => handleClick(match[1])}
+                    style={{ border: 'none', background: 'none', color: 'blue', cursor: 'pointer' }}
+                >
+                    {match[1]}
+                </button>
+            );
+            lastIndex = regex.lastIndex;
+        }
+
+        parts.push(text.substring(lastIndex));
+        return parts;
     };
 
     return (
         <div>
             {text && (
                 <p>
-                    {text.split(' ').map((word, index) => (
-                        word === 'clickable' ? (
-                            <button key={index} onClick={() => handleClick(word)} style={{border: 'none', background: 'none', color: 'blue', cursor: 'pointer'}}>
-                                {word}
-                            </button>
-                        ) : (
-                            <span key={index}>{word} </span>
-                        )
-                    ))}
+                    {renderText()}
                 </p>
             )}
         </div>
