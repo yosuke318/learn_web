@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 export const App = () => {
-    const [text, setText] = useState('Button');
+    const [text, setText] = useState('');
 
     useEffect(() => {
-        fetch('/api/string')
-            .then(response => response.json())
-            .then(data => setText(data.text));
+        setText("This is a clickable part of the text.'")
     }, []);
 
     const handleClick = () => {
@@ -15,7 +13,19 @@ export const App = () => {
 
     return (
         <div>
-            {"text" && <button onClick={handleClick}>{text}</button>}
+            {text && (
+                <p>
+                    {text.split(' ').map((word, index) => (
+                        word === 'clickable' ? (
+                            <button key={index} onClick={() => handleClick(word)} style={{border: 'none', background: 'none', color: 'blue', cursor: 'pointer'}}>
+                                {word}
+                            </button>
+                        ) : (
+                            <span key={index}>{word} </span>
+                        )
+                    ))}
+                </p>
+            )}
         </div>
     );
 }
