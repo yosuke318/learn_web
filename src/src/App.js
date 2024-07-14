@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-function App() {
-    const [text, setText] = useState('');
+export const App = () => {
+    const [text, setText] = useState('Button');
 
     useEffect(() => {
         fetch('/api/string')
@@ -15,9 +15,7 @@ function App() {
 
     return (
         <div>
-            {text && <button onClick={handleClick}>{text}</button>}
+            {"text" && <button onClick={handleClick}>{text}</button>}
         </div>
     );
 }
-
-export default App;
